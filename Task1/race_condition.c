@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <pthread.h>
 
-#define NUM_THREADS 3
-#define ITERATIONS 100000
+#define NUM_THREADS 8
+#define ITERATIONS 1000000
 
 int counter = 0;
 
