@@ -1,0 +1,18 @@
+# Compiled executables
+Task1/multithreading
+Task1/synchronization
+Task1/race_condition
+Task1/deadlock_prevention
+Task1/round_robin
+
+# Object files
+*.o
+
+# Backup files
+*~
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.swp
