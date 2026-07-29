@@ -1,20 +1,24 @@
-# Operating Systems and Security Coursework
+# ST5004CEM Operating Systems and Security
 
-Student: Trisha Rajbanshi
+## Requirements
 
-Module: ST5004CEM
+Ubuntu Linux
+GCC Compiler
 
-This repository contains implementations for the Operating Systems and Security coursework.
+## Compile
+
+gcc filename.c -o filename
+
+## Run
+
+./filename
 
 ## Tasks
 
-- Task 1: Process Management and Threading
-- Task 2: Memory Management
-- Task 3: File System and Security
-- Task 4: Network Programming
+Task1
+Task2
+Task3
+Task4
 
-Programming Language:
-Python
-
-Status:
-Project Initialized
+Author
+Trisha Rajbanshi
