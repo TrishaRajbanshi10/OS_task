@@ -11,6 +11,11 @@ int main()
 {
     int client_socket;
     struct sockaddr_in server_addr;
+
+    char username[50];
+    char password[50];
+    char credentials[100];
+
     char message[BUFFER_SIZE];
     char buffer[BUFFER_SIZE];
 
@@ -18,7 +23,7 @@ int main()
 
     if(client_socket < 0)
     {
-        printf("Socket creation failed.\n");
+        perror("Socket");
         return 1;
     }
 
@@ -30,22 +35,62 @@ int main()
                (struct sockaddr *)&server_addr,
                sizeof(server_addr)) < 0)
     {
-        printf("Connection failed.\n");
+        perror("Connect");
         return 1;
     }
 
-    printf("=====================================\n");
-    printf(" Connected to Server\n");
-    printf("=====================================\n\n");
+    printf("===== Client Login =====\n\n");
 
-    printf("Enter your message: ");
-    fgets(message, BUFFER_SIZE, stdin);
+    printf("Username: ");
+    scanf("%49s", username);
 
-    send(client_socket, message, strlen(message), 0);
+    printf("Password: ");
+    scanf("%49s", password);
 
-    recv(client_socket, buffer, BUFFER_SIZE, 0);
+    sprintf(credentials, "%s %s", username, password);
 
-    printf("\nServer Response: %s\n", buffer);
+    send(client_socket,
+         credentials,
+         strlen(credentials) + 1,
+         0);
+
+    memset(buffer, 0, sizeof(buffer));
+
+    recv(client_socket,
+         buffer,
+         sizeof(buffer),
+         0);
+
+    printf("\n%s\n", buffer);
+
+    if(strcmp(buffer, "Authentication Successful") != 0)
+    {
+        close(client_socket);
+        return 0;
+    }
+
+    getchar();
+
+    printf("\nEnter message: ");
+
+    fgets(message,
+          sizeof(message),
+          stdin);
+
+    send(client_socket,
+         message,
+         strlen(message) + 1,
+         0);
+
+    memset(buffer, 0, sizeof(buffer));
+
+    recv(client_socket,
+         buffer,
+         sizeof(buffer),
+         0);
+
+    printf("\nServer Response: %s\n",
+           buffer);
 
     close(client_socket);
 
