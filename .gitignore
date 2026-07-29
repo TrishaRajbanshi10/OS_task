@@ -1,18 +1,23 @@
-# Compiled executables
+# Task1 executables
 Task1/multithreading
 Task1/synchronization
 Task1/race_condition
 Task1/deadlock_prevention
 Task1/round_robin
 
+# Task2 executables
+Task2/fifo
+Task2/lru
+
+# Task3 executables
+Task3/file_manager
+Task3/authentication
+Task3/encryption
+Task3/audit_log
+
 # Object files
 *.o
 
-# Backup files
-*~
-
-# VS Code
-.vscode/
-
 # Temporary files
 *.swp
+*~
